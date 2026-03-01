@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react';
 
 const css = `
-  /* ══════════════════════════════════════════════════════════════
-     BASE STYLES - Mobile First Approach
-     ══════════════════════════════════════════════════════════════ */
-  
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=DM+Mono:wght@500&display=swap');
+
   *, *::before, *::after { 
     box-sizing: border-box; 
     margin: 0; 
     padding: 0; 
+  }
+
+  html, body, #root {
+    height: 100%;
+    width: 100%;
   }
 
   html {
@@ -18,88 +21,99 @@ const css = `
     -moz-osx-font-smoothing: grayscale;
   }
 
+  /* ══════════════════════════════════════════════════════════════
+     ROOT — TRUE CENTER ON ALL SCREENS
+     ══════════════════════════════════════════════════════════════ */
+
   .root {
     min-height: 100vh;
+    width: 100%;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    padding: 16px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+    align-items: center;
+    padding: 24px 16px;
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   }
 
   .container { 
-    width: 100%; 
-    max-width: 100%;
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
     animation: fadeIn 0.5s ease-in;
   }
 
   @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
 
   /* ══════════════════════════════════════════════════════════════
-     HEADER STYLES
+     HEADER
      ══════════════════════════════════════════════════════════════ */
-  
+
   .header { 
     text-align: center; 
-    margin-bottom: 20px; 
+    margin-bottom: 24px; 
   }
-  
+
   .header h1 { 
-    font-size: 22px;
+    font-size: 26px;
     font-weight: 800; 
     color: #fff;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    text-shadow: 0 2px 8px rgba(0,0,0,0.15);
     margin-bottom: 6px;
+    letter-spacing: -0.5px;
   }
-  
+
   .header p { 
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 13px;
+    color: rgba(255,255,255,0.85);
+    font-size: 14px;
     font-weight: 500;
   }
 
   /* ══════════════════════════════════════════════════════════════
-     CARD STYLES
+     CARDS
      ══════════════════════════════════════════════════════════════ */
-  
+
   .card {
     background: #fff;
-    border-radius: 12px;
-    padding: 18px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.10);
     margin-bottom: 16px;
     transition: transform 0.2s, box-shadow 0.2s;
+    width: 100%;
   }
 
   .card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.13);
   }
 
   .card-dark {
     background: linear-gradient(135deg, #1e293b, #334155);
     color: #fff;
-    border-radius: 12px;
-    padding: 18px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.18);
     margin-bottom: 16px;
+    width: 100%;
   }
 
   /* ══════════════════════════════════════════════════════════════
      FORM ELEMENTS
      ══════════════════════════════════════════════════════════════ */
-  
+
   .lbl { 
     display: block; 
     font-weight: 700;
-    margin-bottom: 8px; 
+    margin-bottom: 10px; 
     color: #1e293b;
-    font-size: 13px;
+    font-size: 12px;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.8px;
   }
 
   .input-wrap { 
@@ -117,12 +131,13 @@ const css = `
     font-size: 14px;
     pointer-events: none;
     z-index: 1;
+    font-family: 'DM Mono', monospace;
   }
 
   .input {
     width: 100%;
-    padding: 12px 16px 12px 50px;
-    border-radius: 10px;
+    padding: 13px 16px 13px 52px;
+    border-radius: 12px;
     border: 2px solid #e2e8f0;
     font-size: 15px;
     outline: none;
@@ -130,14 +145,14 @@ const css = `
     color: #1e293b;
     transition: all 0.2s;
     -webkit-appearance: none;
-    font-family: inherit;
+    font-family: 'DM Mono', monospace;
     font-weight: 600;
   }
 
   .input:focus {
     border-color: #667eea;
     background: #fff;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    box-shadow: 0 0 0 4px rgba(102,126,234,0.12);
   }
 
   .input.err {
@@ -148,21 +163,21 @@ const css = `
 
   @keyframes shake {
     0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-5px); }
-    75% { transform: translateX(5px); }
+    25%       { transform: translateX(-5px); }
+    75%       { transform: translateX(5px); }
   }
 
   .date-input {
     width: 100%;
-    padding: 12px 16px;
-    border-radius: 10px;
+    padding: 13px 16px;
+    border-radius: 12px;
     border: 2px solid #e2e8f0;
     font-size: 15px;
     outline: none;
     background: #f8fafc;
     color: #1e293b;
     -webkit-appearance: none;
-    font-family: inherit;
+    font-family: 'DM Sans', sans-serif;
     transition: all 0.2s;
     font-weight: 600;
   }
@@ -170,47 +185,43 @@ const css = `
   .date-input:focus {
     border-color: #667eea;
     background: #fff;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    box-shadow: 0 0 0 4px rgba(102,126,234,0.12);
   }
 
   /* ══════════════════════════════════════════════════════════════
      BUTTONS
      ══════════════════════════════════════════════════════════════ */
-  
+
   .preset-40 {
-    margin-top: 10px;
-    padding: 8px 18px;
+    margin-top: 12px;
+    padding: 8px 20px;
     border-radius: 20px;
     font-size: 13px;
     font-weight: 700;
     cursor: pointer;
-    font-family: inherit;
+    font-family: 'DM Sans', sans-serif;
     transition: all 0.2s;
     border: 2px solid #e2e8f0;
     background: #f8fafc;
     color: #64748b;
   }
 
-  .preset-40:active {
-    transform: scale(0.98);
-  }
-
   .preset-40.on {
     border-color: #667eea;
     background: linear-gradient(135deg, #667eea, #764ba2);
     color: #fff;
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    box-shadow: 0 4px 12px rgba(102,126,234,0.3);
   }
 
   /* ══════════════════════════════════════════════════════════════
-     DEPOSIT INFO BAR
+     DEPOSIT BAR
      ══════════════════════════════════════════════════════════════ */
-  
+
   .dep-bar {
     margin-top: 12px;
     padding: 12px 16px;
     background: linear-gradient(135deg, #eff6ff, #dbeafe);
-    border-radius: 10px;
+    border-radius: 12px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -219,25 +230,20 @@ const css = `
     border-left: 4px solid #3b82f6;
   }
 
-  .dep-bar.warn-bar {
-    background: linear-gradient(135deg, #fff7ed, #fed7aa);
-    border-left-color: #f59e0b;
-  }
-
   /* ══════════════════════════════════════════════════════════════
      WEEKS GRID
      ══════════════════════════════════════════════════════════════ */
-  
+
   .weeks-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 10px;
     margin-bottom: 12px;
   }
 
   .week-btn {
-    padding: 12px 0;
-    border-radius: 10px;
+    padding: 13px 0;
+    border-radius: 12px;
     font-weight: 700;
     font-size: 14px;
     cursor: pointer;
@@ -245,47 +251,42 @@ const css = `
     background: #f8fafc;
     color: #374151;
     transition: all 0.2s;
-    font-family: inherit;
+    font-family: 'DM Sans', sans-serif;
   }
 
-  .week-btn:active {
-    transform: scale(0.95);
-  }
+  .week-btn:active { transform: scale(0.95); }
 
   .week-btn.on {
     border-color: #667eea;
     background: linear-gradient(135deg, #667eea, #764ba2);
     color: #fff;
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    box-shadow: 0 4px 12px rgba(102,126,234,0.3);
   }
 
   /* ══════════════════════════════════════════════════════════════
      BREAKDOWN ROWS
      ══════════════════════════════════════════════════════════════ */
-  
+
   .brow {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
     gap: 12px;
   }
 
-  .brow:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
-  }
+  .brow:last-child { border-bottom: none; padding-bottom: 0; }
 
   /* ══════════════════════════════════════════════════════════════
      SCHEDULE ROWS
      ══════════════════════════════════════════════════════════════ */
-  
+
   .srow {
     display: flex;
     align-items: center;
     padding: 12px 14px;
-    border-radius: 10px;
+    border-radius: 12px;
     margin-bottom: 8px;
     background: #f8fafc;
     border: 2px solid #e2e8f0;
@@ -310,77 +311,70 @@ const css = `
     font-size: 12px;
     font-weight: 800;
     margin-right: 12px;
-    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+    box-shadow: 0 2px 8px rgba(102,126,234,0.3);
   }
 
   /* ══════════════════════════════════════════════════════════════
      SUBMIT BUTTON
      ══════════════════════════════════════════════════════════════ */
-  
+
   .submit-btn {
     width: 100%;
     padding: 16px;
-    border-radius: 12px;
+    border-radius: 14px;
     border: none;
     background: linear-gradient(135deg, #667eea, #764ba2);
     color: #fff;
     font-size: 16px;
     font-weight: 800;
     cursor: pointer;
-    margin-bottom: 20px;
-    font-family: inherit;
+    margin-bottom: 24px;
+    font-family: 'DM Sans', sans-serif;
     transition: all 0.2s;
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    box-shadow: 0 4px 16px rgba(102,126,234,0.35);
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.8px;
   }
 
   .submit-btn:hover:not(:disabled) {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 8px 24px rgba(102,126,234,0.45);
   }
 
-  .submit-btn:active:not(:disabled) {
-    transform: translateY(0);
-  }
-
-  .submit-btn:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
+  .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
   /* ══════════════════════════════════════════════════════════════
      MODAL
      ══════════════════════════════════════════════════════════════ */
-  
+
   .overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0,0,0,0.6);
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 1000;
     padding: 16px;
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(6px);
     animation: fadeIn 0.2s ease-in;
   }
 
   .modal {
     background: #fff;
-    border-radius: 16px;
-    padding: 24px;
+    border-radius: 20px;
+    padding: 28px;
     width: 100%;
-    max-width: 95%;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-    max-height: 85vh;
+    max-width: 440px;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.3);
+    max-height: 88vh;
     overflow-y: auto;
     animation: slideUp 0.3s ease-out;
   }
 
   @keyframes slideUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
 
   .mrow {
@@ -392,9 +386,7 @@ const css = `
     gap: 12px;
   }
 
-  .mrow:last-of-type {
-    border-bottom: none;
-  }
+  .mrow:last-of-type { border-bottom: none; }
 
   .modal-actions {
     display: flex;
@@ -405,44 +397,42 @@ const css = `
   .btn-close {
     flex: 1;
     padding: 14px;
-    border-radius: 10px;
+    border-radius: 12px;
     border: 2px solid #e2e8f0;
     background: #f8fafc;
     cursor: pointer;
     font-weight: 700;
     font-size: 14px;
-    font-family: inherit;
+    font-family: 'DM Sans', sans-serif;
     transition: all 0.2s;
   }
 
-  .btn-close:hover {
-    background: #e2e8f0;
-  }
+  .btn-close:hover { background: #e2e8f0; }
 
   .btn-confirm {
     flex: 1;
     padding: 14px;
-    border-radius: 10px;
+    border-radius: 12px;
     border: none;
     background: linear-gradient(135deg, #667eea, #764ba2);
     color: #fff;
     cursor: pointer;
     font-weight: 700;
     font-size: 14px;
-    font-family: inherit;
+    font-family: 'DM Sans', sans-serif;
     transition: all 0.2s;
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    box-shadow: 0 4px 12px rgba(102,126,234,0.3);
   }
 
   .btn-confirm:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 6px 16px rgba(102,126,234,0.4);
   }
 
   /* ══════════════════════════════════════════════════════════════
      TEXT UTILITIES
      ══════════════════════════════════════════════════════════════ */
-  
+
   .txt-warn {
     color: #ef4444;
     font-size: 12px;
@@ -471,474 +461,140 @@ const css = `
   }
 
   /* ══════════════════════════════════════════════════════════════
-     MEDIA QUERIES - COMPREHENSIVE RESPONSIVE DESIGN
+     RESPONSIVE — all centered at every breakpoint
      ══════════════════════════════════════════════════════════════ */
 
-  /* ────────────────────────────────────────────────────────────── */
-  /* Extra Small Devices (Portrait Phones, 0-360px) */
-  /* ────────────────────────────────────────────────────────────── */
+  /* Extra Small (≤360px) */
   @media (max-width: 360px) {
     html { font-size: 14px; }
-    
-    .root { 
-      padding: 12px 8px;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    }
-    
+    .root { padding: 16px 10px; }
     .container { max-width: 100%; }
-    
-    .header { margin-bottom: 16px; }
-    .header h1 { font-size: 19px; }
-    .header p { font-size: 12px; }
-    
-    .card, .card-dark {
-      padding: 14px;
-      border-radius: 10px;
-      margin-bottom: 12px;
-    }
-    
-    .lbl { font-size: 12px; }
-    
-    .input, .date-input {
-      font-size: 14px;
-      padding: 10px 14px 10px 45px;
-    }
-    
-    .prefix {
-      left: 12px;
-      font-size: 13px;
-    }
-    
-    .weeks-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 8px;
-    }
-    
-    .week-btn {
-      padding: 10px 0;
-      font-size: 13px;
-    }
-    
-    .preset-40 {
-      padding: 7px 14px;
-      font-size: 12px;
-    }
-    
-    .badge {
-      width: 28px;
-      height: 28px;
-      min-width: 28px;
-      font-size: 11px;
-    }
-    
-    .srow {
-      padding: 10px 12px;
-      margin-bottom: 6px;
-    }
-    
-    .submit-btn {
-      padding: 14px;
-      font-size: 14px;
-    }
-    
-    .modal {
-      padding: 18px;
-      max-width: 100%;
-    }
-    
-    .modal h2 { font-size: 18px !important; }
-    
-    .mrow {
-      font-size: 12px;
-      padding: 8px 0;
-    }
-    
-    .modal-actions {
-      flex-direction: column;
-      gap: 8px;
-    }
-    
-    .btn-close, .btn-confirm {
-      width: 100%;
-      padding: 12px;
-    }
+    .header h1 { font-size: 20px; }
+    .header p  { font-size: 12px; }
+    .card, .card-dark { padding: 14px; border-radius: 12px; margin-bottom: 12px; }
+    .lbl { font-size: 11px; }
+    .input { padding: 10px 14px 10px 44px; font-size: 14px; }
+    .prefix { left: 12px; font-size: 13px; }
+    .weeks-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .week-btn { padding: 11px 0; font-size: 13px; }
+    .badge { width: 28px; height: 28px; min-width: 28px; font-size: 11px; }
+    .srow { padding: 10px 12px; }
+    .submit-btn { padding: 14px; font-size: 14px; }
+    .modal { padding: 18px; }
+    .modal-actions { flex-direction: column; }
+    .btn-close, .btn-confirm { width: 100%; padding: 12px; }
   }
 
-  /* ────────────────────────────────────────────────────────────── */
-  /* Small Devices (Landscape Phones, 361px-480px) */
-  /* ────────────────────────────────────────────────────────────── */
+  /* Small (361px–480px) */
   @media (min-width: 361px) and (max-width: 480px) {
     html { font-size: 15px; }
-    
-    .root { padding: 14px 10px; }
-    
-    .header { margin-bottom: 18px; }
-    .header h1 { font-size: 21px; }
-    .header p { font-size: 13px; }
-    
-    .card, .card-dark {
-      padding: 16px;
-      border-radius: 12px;
-      margin-bottom: 14px;
-    }
-    
-    .weeks-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-    }
-    
-    .modal {
-      padding: 20px;
-      max-width: 100%;
-    }
-    
-    .modal h2 { font-size: 19px !important; }
+    .root { padding: 20px 12px; }
+    .container { max-width: 100%; }
+    .header h1 { font-size: 22px; }
+    .card, .card-dark { padding: 16px; margin-bottom: 14px; }
+    .weeks-grid { grid-template-columns: repeat(2, 1fr); }
+    .modal { max-width: 100%; padding: 20px; }
   }
 
-  /* ────────────────────────────────────────────────────────────── */
-  /* Medium Devices (Tablets Portrait, 481px-768px) */
-  /* ────────────────────────────────────────────────────────────── */
+  /* Medium — Tablet Portrait (481px–768px) */
   @media (min-width: 481px) and (max-width: 768px) {
-    html { font-size: 16px; }
-    
-    .root { padding: 20px 16px; }
-    
-    .container { max-width: 560px; }
-    
-    .header { margin-bottom: 24px; }
-    .header h1 { font-size: 26px; }
-    .header p { font-size: 14px; }
-    
-    .card, .card-dark {
-      padding: 20px;
-      border-radius: 14px;
-      margin-bottom: 18px;
-    }
-    
-    .weeks-grid {
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
-    
-    .input, .date-input {
-      font-size: 16px;
-    }
-    
-    .modal {
-      max-width: 480px;
-      padding: 28px;
-    }
-    
-    .modal h2 { font-size: 22px !important; }
+    .root { padding: 32px 20px; }
+    .container { max-width: 500px; }
+    .header h1 { font-size: 28px; }
+    .header p  { font-size: 14px; }
+    .card, .card-dark { padding: 22px; margin-bottom: 18px; }
+    .modal { max-width: 460px; padding: 28px; }
   }
 
-  /* ────────────────────────────────────────────────────────────── */
-  /* Large Tablets (Tablets Landscape, 769px-1024px) */
-  /* ────────────────────────────────────────────────────────────── */
+  /* Large — Tablet Landscape (769px–1024px) */
   @media (min-width: 769px) and (max-width: 1024px) {
-    html { font-size: 16px; }
-    
-    .root { padding: 32px 24px; }
-    
-    .container { max-width: 620px; }
-    
-    .header { margin-bottom: 28px; }
-    .header h1 { font-size: 30px; }
-    .header p { font-size: 15px; }
-    
-    .card, .card-dark {
-      padding: 24px;
-      border-radius: 16px;
-      margin-bottom: 20px;
-    }
-    
-    .weeks-grid {
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-    }
-    
-    .week-btn {
-      padding: 14px 0;
-      font-size: 15px;
-    }
-    
-    .submit-btn {
-      padding: 18px;
-      font-size: 17px;
-    }
-    
-    .modal {
-      max-width: 540px;
-      padding: 32px;
-    }
-    
-    .modal h2 { font-size: 24px !important; }
+    .root { padding: 48px 32px; }
+    .container { max-width: 560px; }
+    .header h1 { font-size: 32px; }
+    .header p  { font-size: 15px; }
+    .card, .card-dark { padding: 26px; margin-bottom: 20px; }
+    .week-btn { padding: 14px 0; font-size: 15px; }
+    .submit-btn { padding: 18px; font-size: 17px; }
+    .modal { max-width: 520px; padding: 32px; }
   }
 
-  /* ────────────────────────────────────────────────────────────── */
-  /* Desktop (Laptops/Desktops, 1025px-1440px) */
-  /* ────────────────────────────────────────────────────────────── */
+  /* Desktop (1025px–1440px) */
   @media (min-width: 1025px) and (max-width: 1440px) {
-    html { font-size: 16px; }
-    
-    .root { 
-      padding: 48px 32px 60px;
-    }
-    
-    .container { max-width: 680px; }
-    
-    .header { margin-bottom: 32px; }
-    .header h1 { font-size: 34px; }
-    .header p { font-size: 16px; }
-    
-    .card, .card-dark {
-      padding: 28px;
-      border-radius: 16px;
-      margin-bottom: 24px;
-    }
-    
-    .lbl { font-size: 14px; }
-    
-    .input, .date-input {
-      font-size: 16px;
-      padding: 14px 18px 14px 54px;
-    }
-    
-    .prefix {
-      left: 16px;
-      font-size: 15px;
-    }
-    
-    .weeks-grid {
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-    }
-    
-    .week-btn {
-      padding: 14px 0;
-      font-size: 15px;
-    }
-    
-    .preset-40 {
-      padding: 10px 22px;
-      font-size: 14px;
-    }
-    
-    .badge {
-      width: 36px;
-      height: 36px;
-      min-width: 36px;
-      font-size: 13px;
-    }
-    
-    .srow {
-      padding: 14px 16px;
-    }
-    
-    .submit-btn {
-      padding: 18px;
-      font-size: 18px;
-    }
-    
-    .modal {
-      max-width: 560px;
-      padding: 36px;
-    }
-    
-    .modal h2 { font-size: 26px !important; }
-    
-    .mrow {
-      padding: 12px 0;
-      font-size: 15px;
-    }
+    .root { padding: 60px 40px; }
+    .container { max-width: 620px; }
+    .header h1 { font-size: 36px; }
+    .header p  { font-size: 16px; }
+    .card, .card-dark { padding: 28px; margin-bottom: 22px; }
+    .lbl { font-size: 13px; }
+    .input, .date-input { font-size: 16px; padding: 14px 18px 14px 54px; }
+    .prefix { left: 16px; font-size: 15px; }
+    .week-btn { padding: 14px 0; font-size: 15px; }
+    .badge { width: 36px; height: 36px; min-width: 36px; font-size: 13px; }
+    .srow { padding: 14px 16px; }
+    .submit-btn { padding: 18px; font-size: 17px; }
+    .modal { max-width: 540px; padding: 36px; }
+    .mrow { font-size: 15px; padding: 12px 0; }
   }
 
-  /* ────────────────────────────────────────────────────────────── */
-  /* Large Desktop (Wide Screens, 1441px+) */
-  /* ────────────────────────────────────────────────────────────── */
+  /* Wide Desktop (1441px+) */
   @media (min-width: 1441px) {
-    html { font-size: 18px; }
-    
-    .root { 
-      padding: 60px 40px 80px;
-    }
-    
-    .container { max-width: 720px; }
-    
-    .header { margin-bottom: 36px; }
-    .header h1 { font-size: 38px; }
-    .header p { font-size: 17px; }
-    
-    .card, .card-dark {
-      padding: 32px;
-      border-radius: 18px;
-      margin-bottom: 28px;
-    }
-    
-    .lbl { font-size: 15px; }
-    
-    .input, .date-input {
-      font-size: 17px;
-      padding: 16px 20px 16px 58px;
-    }
-    
-    .prefix {
-      left: 18px;
-      font-size: 16px;
-    }
-    
-    .weeks-grid {
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-    
-    .week-btn {
-      padding: 16px 0;
-      font-size: 16px;
-    }
-    
-    .preset-40 {
-      padding: 12px 24px;
-      font-size: 15px;
-    }
-    
-    .badge {
-      width: 40px;
-      height: 40px;
-      min-width: 40px;
-      font-size: 14px;
-    }
-    
-    .srow {
-      padding: 16px 18px;
-      margin-bottom: 10px;
-    }
-    
-    .submit-btn {
-      padding: 20px;
-      font-size: 19px;
-    }
-    
-    .modal {
-      max-width: 600px;
-      padding: 40px;
-    }
-    
-    .modal h2 { font-size: 28px !important; }
-    
-    .mrow {
-      padding: 14px 0;
-      font-size: 16px;
-    }
+    html { font-size: 17px; }
+    .root { padding: 80px 48px; }
+    .container { max-width: 680px; }
+    .header h1 { font-size: 40px; }
+    .header p  { font-size: 17px; }
+    .card, .card-dark { padding: 32px; border-radius: 20px; margin-bottom: 26px; }
+    .lbl { font-size: 14px; }
+    .input, .date-input { font-size: 17px; padding: 16px 20px 16px 58px; }
+    .prefix { left: 18px; font-size: 16px; }
+    .week-btn { padding: 16px 0; font-size: 16px; }
+    .badge { width: 40px; height: 40px; min-width: 40px; font-size: 14px; }
+    .srow { padding: 16px 18px; margin-bottom: 10px; }
+    .submit-btn { padding: 20px; font-size: 18px; }
+    .modal { max-width: 600px; padding: 40px; }
+    .mrow { font-size: 16px; padding: 14px 0; }
   }
 
-  /* ────────────────────────────────────────────────────────────── */
-  /* Orientation Specific Adjustments */
-  /* ────────────────────────────────────────────────────────────── */
-  
-  /* Landscape orientation for small devices */
+  /* Landscape small devices */
   @media (max-width: 896px) and (orientation: landscape) {
-    .root { 
-      padding: 12px; 
-      min-height: 100vh;
-    }
-    
-    .header { margin-bottom: 16px; }
+    .root { padding: 16px 12px; }
+    .header { margin-bottom: 14px; }
     .header h1 { font-size: 20px; }
-    .header p { font-size: 12px; }
-    
-    .card, .card-dark {
-      padding: 14px;
-      margin-bottom: 12px;
-    }
-    
-    .submit-btn {
-      margin-bottom: 16px;
-    }
-    
-    .modal {
-      max-height: 95vh;
-    }
+    .card, .card-dark { padding: 14px; margin-bottom: 12px; }
+    .modal { max-height: 95vh; }
   }
 
-  /* ────────────────────────────────────────────────────────────── */
-  /* High DPI / Retina Displays */
-  /* ────────────────────────────────────────────────────────────── */
-  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-    .card, .card-dark {
-      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-    }
-    
-    .submit-btn, .btn-confirm {
-      box-shadow: 0 6px 16px rgba(102, 126, 234, 0.35);
-    }
-  }
-
-  /* ────────────────────────────────────────────────────────────── */
-  /* Print Styles */
-  /* ────────────────────────────────────────────────────────────── */
-  @media print {
-    .root {
-      background: #fff;
-      padding: 0;
-    }
-    
-    .submit-btn, .preset-40, .week-btn {
-      display: none;
-    }
-    
-    .card, .card-dark {
-      box-shadow: none;
-      border: 1px solid #ddd;
-      page-break-inside: avoid;
-    }
-    
-    .modal {
-      position: static;
-      box-shadow: none;
-    }
-  }
-
-  /* ────────────────────────────────────────────────────────────── */
-  /* Accessibility - Prefers Reduced Motion */
-  /* ────────────────────────────────────────────────────────────── */
+  /* Reduced motion */
   @media (prefers-reduced-motion: reduce) {
     * {
       animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
     }
   }
 
-  /* ────────────────────────────────────────────────────────────── */
-  /* Dark Mode Support */
-  /* ────────────────────────────────────────────────────────────── */
+  /* Dark mode */
   @media (prefers-color-scheme: dark) {
-    .root {
-      background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-    }
-    
+    .root { background: linear-gradient(135deg, #1e293b 0%, #334155 100%); }
     .card {
-      background: #ebecf1;
-      color: #f1f5f9;
+      background: #f1f5f9;
       border: 1px solid #334155;
-      border-left:4px solid #3b82f6;
+      border-left: 4px solid #3b82f6;
       border-top: 4px solid #3b82f6;
     }
-    
-    .lbl {
-      color: #020305;
-    }
-    
+    .lbl { color: #0f172a; }
     .input, .date-input {
       background: #0f172a;
-      color: #03080c;
+      color: #f1f5f9;
       border-color: #334155;
     }
-    
-    .input::placeholder {
-      color: #64748b;
-    }
+    .input::placeholder { color: #64748b; }
+  }
+
+  /* Print */
+  @media print {
+    .root { background: #fff; padding: 0; justify-content: flex-start; }
+    .submit-btn, .preset-40, .week-btn { display: none; }
+    .card, .card-dark { box-shadow: none; border: 1px solid #ddd; page-break-inside: avoid; }
   }
 `;
 
@@ -958,7 +614,7 @@ export default function ResponsiveCalculator() {
   const rawVal     = parseFloat(depositInput) || 0;
   const isBelowMin = cashPrice > 0 && rawVal > 0 && rawVal < minDeposit;
   const isAboveMax = cashPrice > 0 && rawVal > cashPrice;
-  const depositKsh = isAboveMax ? cashPrice : (isBelowMin ? rawVal : rawVal);
+  const depositKsh = isAboveMax ? cashPrice : rawVal;
   const depositPct = cashPrice > 0 ? (depositKsh / cashPrice) * 100 : 0;
   const remaining  = Math.max(cashPrice - depositKsh, 0);
   const multiplier = MULTIPLIERS[selectedWeeks];
@@ -998,7 +654,9 @@ export default function ResponsiveCalculator() {
   const SummaryDialog = () => (
     <div className="overlay" onClick={() => setShowSummary(false)}>
       <div className="modal" onClick={e => e.stopPropagation()}>
-        <h2 style={{ marginBottom: 24, fontSize: 22, fontWeight: 700, color: '#1e293b' }}>Payment Summary</h2>
+        <h2 style={{ marginBottom: 24, fontSize: 22, fontWeight: 800, color: '#1e293b', letterSpacing: '-0.5px' }}>
+          Payment Summary
+        </h2>
         {[
           ['Cash Price',             `Ksh ${cashPrice.toFixed(2)}`],
           startDate ? ['Start Date', fmtS(startDate)] : null,
@@ -1014,7 +672,7 @@ export default function ResponsiveCalculator() {
         ].filter(Boolean).map(([label, value]) => (
           <div key={label} className="mrow">
             <span style={{ color: '#64748b', fontSize: 14, fontWeight: 600 }}>{label}</span>
-            <span style={{ fontWeight: 700, fontSize: 14, textAlign: 'right', color: '#1e293b' }}>{value}</span>
+            <span style={{ fontWeight: 700, fontSize: 14, textAlign: 'right', color: '#1e293b', fontFamily: "'DM Mono', monospace" }}>{value}</span>
           </div>
         ))}
         <div className="modal-actions">
@@ -1039,6 +697,7 @@ export default function ResponsiveCalculator() {
             <p>Plan your payments with ease</p>
           </div>
 
+          {/* Cash Price */}
           <div className="card">
             <label className="lbl">Cash Price</label>
             <div className="input-wrap">
@@ -1052,6 +711,7 @@ export default function ResponsiveCalculator() {
             </div>
           </div>
 
+          {/* Deposit */}
           <div className="card">
             <label className="lbl">Deposit Amount</label>
             <p style={{ fontSize: 12, color: '#64748b', marginBottom: 10, fontWeight: 500 }}>
@@ -1095,13 +755,14 @@ export default function ResponsiveCalculator() {
                 <span style={{ color: '#3b82f6', fontSize: 13, fontWeight: 600 }}>
                   Deposit — {depositPct.toFixed(1)}% of cash price
                 </span>
-                <span style={{ color: '#1d4ed8', fontWeight: 800, fontSize: 15 }}>
+                <span style={{ color: '#1d4ed8', fontWeight: 800, fontSize: 15, fontFamily: "'DM Mono', monospace" }}>
                   Ksh {depositKsh.toFixed(2)}
                 </span>
               </div>
             )}
           </div>
 
+          {/* Start Date */}
           <div className="card">
             <label className="lbl">Payment Start Date</label>
             <input
@@ -1118,6 +779,7 @@ export default function ResponsiveCalculator() {
             )}
           </div>
 
+          {/* Weeks */}
           <div className="card">
             <label className="lbl">Number of Weeks</label>
             <div className="weeks-grid">
@@ -1136,6 +798,7 @@ export default function ResponsiveCalculator() {
             </p>
           </div>
 
+          {/* Breakdown */}
           <div className="card-dark">
             <h3 style={{ marginBottom: 16, fontSize: 16, fontWeight: 800 }}>Payment Breakdown</h3>
             {[
@@ -1144,27 +807,29 @@ export default function ResponsiveCalculator() {
               ['Balance After Deposit', `Ksh ${remaining.toFixed(2)}`],
               ['Weekly Installment',    `Ksh ${weekly.toFixed(2)}`],
               ['Number of Weeks',       `${selectedWeeks} weeks`],
-              
             ].map(([label, value]) => (
               <div key={label} className="brow">
-                <span style={{ color: 'rgba(255,255,255,0.8)', fontSize: 14, fontWeight: 500 }}>{label}</span>
-                <span style={{ fontWeight: 700, fontSize: 14, textAlign: 'right' }}>{value}</span>
+                <span style={{ color: 'rgba(255,255,255,0.75)', fontSize: 14, fontWeight: 500 }}>{label}</span>
+                <span style={{ fontWeight: 700, fontSize: 14, textAlign: 'right', fontFamily: "'DM Mono', monospace" }}>{value}</span>
               </div>
             ))}
           </div>
 
+          {/* Schedule */}
           {cashPrice > 0 && !isBelowMin && !isAboveMax && depositKsh > 0 && (
             <div className="card">
               <h3 style={{ marginBottom: 16, fontSize: 16, fontWeight: 800, color: '#1e293b' }}>
                 Payment Schedule
               </h3>
 
-              <div style={{ display:'flex', alignItems:'center', padding:'12px 14px', background:'linear-gradient(135deg, #eff6ff, #dbeafe)', borderRadius:10, marginBottom:10, borderLeft: '4px solid #3b82f6' }}>
+              <div style={{ display:'flex', alignItems:'center', padding:'12px 14px', background:'linear-gradient(135deg,#eff6ff,#dbeafe)', borderRadius:12, marginBottom:10, borderLeft:'4px solid #3b82f6' }}>
                 <span style={{ fontSize:20, marginRight:12 }}>💳</span>
                 <span style={{ flex:1, fontSize:14, color:'#374151', fontWeight:600 }}>
                   {startDate ? `Initial Deposit — ${fmtS(startDate)}` : 'Initial Deposit'}
                 </span>
-                <span style={{ fontWeight:800, color:'#1d4ed8' }}>Ksh {depositKsh.toFixed(2)}</span>
+                <span style={{ fontWeight:800, color:'#1d4ed8', fontFamily:"'DM Mono', monospace" }}>
+                  Ksh {depositKsh.toFixed(2)}
+                </span>
               </div>
 
               {schedule.map(p => (
@@ -1173,13 +838,22 @@ export default function ResponsiveCalculator() {
                   <span style={{ flex:1, fontSize:14, color:'#374151', fontWeight:500 }}>
                     {p.date ? `Week ${p.week} — ${fmtS(p.date)}` : `Week ${p.week}`}
                   </span>
-                  <span style={{ fontWeight:700, color:'#1e293b' }}>Ksh {weekly.toFixed(2)}</span>
+                  <span style={{ fontWeight:700, color:'#1e293b', fontFamily:"'DM Mono', monospace" }}>
+                    Ksh {weekly.toFixed(2)}
+                  </span>
                 </div>
               ))}
             </div>
           )}
 
-          
+          {/* Summary Button */}
+          <button
+            className="submit-btn"
+            disabled={!canConfirm}
+            onClick={() => setShowSummary(true)}
+          >
+            View Payment Summary
+          </button>
         </div>
       </div>
     </>
