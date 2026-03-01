@@ -110,7 +110,7 @@ const css = `
     display: block; 
     font-weight: 700;
     margin-bottom: 10px; 
-    color: #1e293b;
+    color: #06080a;
     font-size: 12px;
     text-transform: uppercase;
     letter-spacing: 0.8px;
@@ -141,7 +141,7 @@ const css = `
     border: 2px solid #e2e8f0;
     font-size: 15px;
     outline: none;
-    background: #f8fafc;
+   
     color: #1e293b;
     transition: all 0.2s;
     -webkit-appearance: none;
@@ -151,8 +151,8 @@ const css = `
 
   .input:focus {
     border-color: #667eea;
-    background: #fff;
-    box-shadow: 0 0 0 4px rgba(102,126,234,0.12);
+    
+    
   }
 
   .input.err {
@@ -847,13 +847,7 @@ export default function ResponsiveCalculator() {
           )}
 
           {/* Summary Button */}
-          <button
-            className="submit-btn"
-            disabled={!canConfirm}
-            onClick={() => setShowSummary(true)}
-          >
-            View Payment Summary
-          </button>
+          
         </div>
       </div>
     </>
