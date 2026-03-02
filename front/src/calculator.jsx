@@ -629,11 +629,7 @@ export default function ResponsiveCalculator() {
     return d.toISOString().split('T')[0];
   })();
 
-  const schedule = Array.from({ length: selectedWeeks }, (_, i) => {
-    const d = startDate ? new Date(startDate) : null;
-    if (d) d.setDate(d.getDate() + (i + 1) * 7);
-    return { week: i + 1, date: d ? d.toISOString().split('T')[0] : null };
-  });
+  
 
   useEffect(() => {
     if (using40) setDepositInput((cashPrice * 0.40).toFixed(2));
@@ -832,17 +828,8 @@ export default function ResponsiveCalculator() {
                 </span>
               </div>
 
-              {schedule.map(p => (
-                <div key={p.week} className="srow">
-                  <div className="badge">{p.week}</div>
-                  <span style={{ flex:1, fontSize:14, color:'#374151', fontWeight:500 }}>
-                    {p.date ? `Week ${p.week} — ${fmtS(p.date)}` : `Week ${p.week}`}
-                  </span>
-                  <span style={{ fontWeight:700, color:'#1e293b', fontFamily:"'DM Mono', monospace" }}>
-                    Ksh {weekly.toFixed(2)}
-                  </span>
-                </div>
-              ))}
+            
+              
             </div>
           )}
 
