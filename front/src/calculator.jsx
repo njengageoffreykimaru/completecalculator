@@ -713,15 +713,7 @@ export default function ResponsiveCalculator() {
                   Ksh {depositKsh.toFixed(2)}
                 </span>
               </div>
-            </div>
-          )}
-
-          {/* View Summary Button */}
-          {canConfirm && (
-            <button className="submit-btn" onClick={() => setShowSummary(true)}>
-              View Payment Summary
-            </button>
-          )}
+            
         </div>
       </div>
     </>
