@@ -661,7 +661,7 @@ export default function ResponsiveCalculator() {
           ['Multiplier',             `${multiplier}x`],
           ['Weekly Installment',     `Ksh ${weekly.toFixed(2)}`],
           ['Total Weekly Payments',  `Ksh ${(weekly * selectedWeeks).toFixed(2)}`],
-          ['Total to Pay',           `Ksh ${total.toFixed(2)}`],
+         
           ['Interest Amount',        `Ksh ${interest.toFixed(2)}`],
         ].filter(Boolean).map(([label, value]) => (
           <div key={label} className="mrow">
@@ -811,8 +811,6 @@ export default function ResponsiveCalculator() {
           {/* Schedule */}
           {cashPrice > 0 && !isBelowMin && !isAboveMax && depositKsh > 0 && (
             <div className="card">
-              
-
               <div style={{ display:'flex', alignItems:'center', padding:'12px 14px', background:'linear-gradient(135deg,#eff6ff,#dbeafe)', borderRadius:12, marginBottom:10, borderLeft:'4px solid #3b82f6' }}>
                 <span style={{ fontSize:20, marginRight:12 }}>💳</span>
                 <span style={{ flex:1, fontSize:14, color:'#374151', fontWeight:600 }}>
