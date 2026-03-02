@@ -538,38 +538,8 @@ export default function ResponsiveCalculator() {
     setDepositInput(e.target.value);
   };
 
-  const canConfirm = cashPrice > 0 && !isBelowMin && !isAboveMax && depositKsh > 0;
-
-  const SummaryDialog = () => (
-    <div className="overlay" onClick={() => setShowSummary(false)}>
-      <div className="modal" onClick={e => e.stopPropagation()}>
-        <h2 style={{ marginBottom: 24, fontSize: 22, fontWeight: 800, color: '#1e293b', letterSpacing: '-0.5px' }}>
-          Payment Summary
-        </h2>
-        {[
-          ['Cash Price',             `Ksh ${cashPrice.toFixed(2)}`],
-          startDate ? ['Start Date', fmtS(startDate)] : null,
-          startDate ? ['End Date',   fmtS(endDate)]   : null,
-          ['Deposit',                `Ksh ${depositKsh.toFixed(2)} (${depositPct.toFixed(1)}%)`],
-          ['Number of Weeks',        `${selectedWeeks} weeks`],
-          ['Multiplier',             `${multiplier}x`],
-          ['Weekly Installment',     `Ksh ${weekly.toFixed(2)}`],
-          ['Total Weekly Payments',  `Ksh ${(weekly * selectedWeeks).toFixed(2)}`],
-          ['Interest Amount',        `Ksh ${interest.toFixed(2)}`],
-        ].filter(Boolean).map(([label, value]) => (
-          <div key={label} className="mrow">
-            <span style={{ color: '#64748b', fontSize: 14, fontWeight: 600 }}>{label}</span>
-            <span style={{ fontWeight: 700, fontSize: 14, textAlign: 'right', color: '#1e293b', fontFamily: "'DM Mono', monospace" }}>{value}</span>
-          </div>
-        ))}
-        <div className="modal-actions">
-          <button className="btn-close" onClick={() => setShowSummary(false)}>Close</button>
-          <button className="btn-confirm" onClick={() => { setShowSummary(false); alert('Payment plan confirmed!'); }}>
-            Confirm
-          </button>
-        </div>
-      </div>
-    </div>
+  const canConfirm = cashPrice > 0 && !isBelowMin && !isAboveMax && depositKsh > 
+      
   );
 
   return (
