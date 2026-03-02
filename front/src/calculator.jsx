@@ -21,10 +21,6 @@ const css = `
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* ══════════════════════════════════════════════════════════════
-     ROOT — TRUE CENTER ON ALL SCREENS
-     ══════════════════════════════════════════════════════════════ */
-
   .root {
     min-height: 100vh;
     width: 100%;
@@ -41,17 +37,13 @@ const css = `
     width: 100%;
     max-width: 480px;
     margin: 0 auto;
-    animation: fadeIn 0.5s e-in;
+    animation: fadeIn 0.5s ease-in;
   }
 
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(12px); }
     to   { opacity: 1; transform: translateY(0); }
   }
-
-  /* ══════════════════════════════════════════════════════════════
-     HEADER
-     ══════════════════════════════════════════════════════════════ */
 
   .header { 
     text-align: center; 
@@ -72,10 +64,6 @@ const css = `
     font-size: 14px;
     font-weight: 500;
   }
-
-  /* ══════════════════════════════════════════════════════════════
-     CARDS
-     ══════════════════════════════════════════════════════════════ */
 
   .card {
     background: #fff;
@@ -101,10 +89,6 @@ const css = `
     margin-bottom: 16px;
     width: 100%;
   }
-
-  /* ══════════════════════════════════════════════════════════════
-     FORM ELEMENTS
-     ══════════════════════════════════════════════════════════════ */
 
   .lbl { 
     display: block; 
@@ -141,7 +125,6 @@ const css = `
     border: 2px solid #e2e8f0;
     font-size: 15px;
     outline: none;
-   
     color: #1e293b;
     transition: all 0.2s;
     -webkit-appearance: none;
@@ -151,8 +134,6 @@ const css = `
 
   .input:focus {
     border-color: #667eea;
-    
-    
   }
 
   .input.err {
@@ -188,10 +169,6 @@ const css = `
     box-shadow: 0 0 0 4px rgba(102,126,234,0.12);
   }
 
-  /* ══════════════════════════════════════════════════════════════
-     BUTTONS
-     ══════════════════════════════════════════════════════════════ */
-
   .preset-40 {
     margin-top: 12px;
     padding: 8px 20px;
@@ -213,10 +190,6 @@ const css = `
     box-shadow: 0 4px 12px rgba(102,126,234,0.3);
   }
 
-  /* ══════════════════════════════════════════════════════════════
-     DEPOSIT BAR
-     ══════════════════════════════════════════════════════════════ */
-
   .dep-bar {
     margin-top: 12px;
     padding: 12px 16px;
@@ -229,10 +202,6 @@ const css = `
     gap: 8px;
     border-left: 4px solid #3b82f6;
   }
-
-  /* ══════════════════════════════════════════════════════════════
-     WEEKS GRID
-     ══════════════════════════════════════════════════════════════ */
 
   .weeks-grid {
     display: grid;
@@ -263,10 +232,6 @@ const css = `
     box-shadow: 0 4px 12px rgba(102,126,234,0.3);
   }
 
-  /* ══════════════════════════════════════════════════════════════
-     BREAKDOWN ROWS
-     ══════════════════════════════════════════════════════════════ */
-
   .brow {
     display: flex;
     justify-content: space-between;
@@ -277,75 +242,6 @@ const css = `
   }
 
   .brow:last-child { border-bottom: none; padding-bottom: 0; }
-
-  /* ══════════════════════════════════════════════════════════════
-     SCHEDULE ROWS
-     ══════════════════════════════════════════════════════════════ */
-
-  .srow {
-    display: flex;
-    align-items: center;
-    padding: 12px 14px;
-    border-radius: 12px;
-    margin-bottom: 8px;
-    background: #f8fafc;
-    border: 2px solid #e2e8f0;
-    transition: all 0.2s;
-  }
-
-  .srow:hover {
-    border-color: #667eea;
-    background: #f0f4ff;
-  }
-
-  .badge {
-    width: 32px;
-    height: 32px;
-    min-width: 32px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-    font-weight: 800;
-    margin-right: 12px;
-    box-shadow: 0 2px 8px rgba(102,126,234,0.3);
-  }
-
-  /* ══════════════════════════════════════════════════════════════
-     SUBMIT BUTTON
-     ══════════════════════════════════════════════════════════════ */
-
-  .submit-btn {
-    width: 100%;
-    padding: 16px;
-    border-radius: 14px;
-    border: none;
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    color: #fff;
-    font-size: 16px;
-    font-weight: 800;
-    cursor: pointer;
-    margin-bottom: 24px;
-    font-family: 'DM Sans', sans-serif;
-    transition: all 0.2s;
-    box-shadow: 0 4px 16px rgba(102,126,234,0.35);
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-  }
-
-  .submit-btn:hover:not(:disabled) {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(102,126,234,0.45);
-  }
-
-  .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
-
-  /* ══════════════════════════════════════════════════════════════
-     MODAL
-     ══════════════════════════════════════════════════════════════ */
 
   .overlay {
     position: fixed;
@@ -429,10 +325,6 @@ const css = `
     box-shadow: 0 6px 16px rgba(102,126,234,0.4);
   }
 
-  /* ══════════════════════════════════════════════════════════════
-     TEXT UTILITIES
-     ══════════════════════════════════════════════════════════════ */
-
   .txt-warn {
     color: #ef4444;
     font-size: 12px;
@@ -460,11 +352,31 @@ const css = `
     gap: 6px;
   }
 
-  /* ══════════════════════════════════════════════════════════════
-     RESPONSIVE — all centered at every breakpoint
-     ══════════════════════════════════════════════════════════════ */
+  .submit-btn {
+    width: 100%;
+    padding: 16px;
+    border-radius: 14px;
+    border: none;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 800;
+    cursor: pointer;
+    margin-bottom: 24px;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.2s;
+    box-shadow: 0 4px 16px rgba(102,126,234,0.35);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+  }
 
-  /* Extra Small (≤360px) */
+  .submit-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(102,126,234,0.45);
+  }
+
+  .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
   @media (max-width: 360px) {
     html { font-size: 14px; }
     .root { padding: 16px 10px; }
@@ -477,15 +389,12 @@ const css = `
     .prefix { left: 12px; font-size: 13px; }
     .weeks-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
     .week-btn { padding: 11px 0; font-size: 13px; }
-    .badge { width: 28px; height: 28px; min-width: 28px; font-size: 11px; }
-    .srow { padding: 10px 12px; }
     .submit-btn { padding: 14px; font-size: 14px; }
     .modal { padding: 18px; }
     .modal-actions { flex-direction: column; }
     .btn-close, .btn-confirm { width: 100%; padding: 12px; }
   }
 
-  /* Small (361px–480px) */
   @media (min-width: 361px) and (max-width: 480px) {
     html { font-size: 15px; }
     .root { padding: 20px 12px; }
@@ -496,66 +405,53 @@ const css = `
     .modal { max-width: 100%; padding: 20px; }
   }
 
-  /* Medium — Tablet Portrait (481px–768px) */
   @media (min-width: 481px) and (max-width: 768px) {
     .root { padding: 32px 20px; }
     .container { max-width: 500px; }
     .header h1 { font-size: 28px; }
-    .header p  { font-size: 14px; }
     .card, .card-dark { padding: 22px; margin-bottom: 18px; }
     .modal { max-width: 460px; padding: 28px; }
   }
 
-  /* Large — Tablet Landscape (769px–1024px) */
   @media (min-width: 769px) and (max-width: 1024px) {
     .root { padding: 48px 32px; }
     .container { max-width: 560px; }
     .header h1 { font-size: 32px; }
-    .header p  { font-size: 15px; }
     .card, .card-dark { padding: 26px; margin-bottom: 20px; }
     .week-btn { padding: 14px 0; font-size: 15px; }
     .submit-btn { padding: 18px; font-size: 17px; }
     .modal { max-width: 520px; padding: 32px; }
   }
 
-  /* Desktop (1025px–1440px) */
   @media (min-width: 1025px) and (max-width: 1440px) {
     .root { padding: 60px 40px; }
     .container { max-width: 620px; }
     .header h1 { font-size: 36px; }
-    .header p  { font-size: 16px; }
     .card, .card-dark { padding: 28px; margin-bottom: 22px; }
     .lbl { font-size: 13px; }
     .input, .date-input { font-size: 16px; padding: 14px 18px 14px 54px; }
     .prefix { left: 16px; font-size: 15px; }
     .week-btn { padding: 14px 0; font-size: 15px; }
-    .badge { width: 36px; height: 36px; min-width: 36px; font-size: 13px; }
-    .srow { padding: 14px 16px; }
     .submit-btn { padding: 18px; font-size: 17px; }
     .modal { max-width: 540px; padding: 36px; }
     .mrow { font-size: 15px; padding: 12px 0; }
   }
 
-  /* Wide Desktop (1441px+) */
   @media (min-width: 1441px) {
     html { font-size: 17px; }
     .root { padding: 80px 48px; }
     .container { max-width: 680px; }
     .header h1 { font-size: 40px; }
-    .header p  { font-size: 17px; }
     .card, .card-dark { padding: 32px; border-radius: 20px; margin-bottom: 26px; }
     .lbl { font-size: 14px; }
     .input, .date-input { font-size: 17px; padding: 16px 20px 16px 58px; }
     .prefix { left: 18px; font-size: 16px; }
     .week-btn { padding: 16px 0; font-size: 16px; }
-    .badge { width: 40px; height: 40px; min-width: 40px; font-size: 14px; }
-    .srow { padding: 16px 18px; margin-bottom: 10px; }
     .submit-btn { padding: 20px; font-size: 18px; }
     .modal { max-width: 600px; padding: 40px; }
     .mrow { font-size: 16px; padding: 14px 0; }
   }
 
-  /* Landscape small devices */
   @media (max-width: 896px) and (orientation: landscape) {
     .root { padding: 16px 12px; }
     .header { margin-bottom: 14px; }
@@ -564,7 +460,6 @@ const css = `
     .modal { max-height: 95vh; }
   }
 
-  /* Reduced motion */
   @media (prefers-reduced-motion: reduce) {
     * {
       animation-duration: 0.01ms !important;
@@ -572,7 +467,6 @@ const css = `
     }
   }
 
-  /* Dark mode */
   @media (prefers-color-scheme: dark) {
     .root { background: linear-gradient(135deg, #1e293b 0%, #334155 100%); }
     .card {
@@ -590,7 +484,6 @@ const css = `
     .input::placeholder { color: #64748b; }
   }
 
-  /* Print */
   @media print {
     .root { background: #fff; padding: 0; justify-content: flex-start; }
     .submit-btn, .preset-40, .week-btn { display: none; }
@@ -616,6 +509,9 @@ export default function ResponsiveCalculator() {
   const isAboveMax = cashPrice > 0 && rawVal > cashPrice;
   const depositKsh = isAboveMax ? cashPrice : rawVal;
   const depositPct = cashPrice > 0 ? (depositKsh / cashPrice) * 100 : 0;
+
+  const remaining  = cashPrice - depositKsh;
+
   const multiplier = MULTIPLIERS[selectedWeeks];
   const weekly     = remaining > 0 ? (remaining / selectedWeeks) * multiplier : 0;
   const total      = depositKsh + weekly * selectedWeeks;
@@ -627,8 +523,6 @@ export default function ResponsiveCalculator() {
     d.setDate(d.getDate() + selectedWeeks * 7);
     return d.toISOString().split('T')[0];
   })();
-
-  
 
   useEffect(() => {
     if (using40) setDepositInput((cashPrice * 0.40).toFixed(2));
@@ -661,7 +555,6 @@ export default function ResponsiveCalculator() {
           ['Multiplier',             `${multiplier}x`],
           ['Weekly Installment',     `Ksh ${weekly.toFixed(2)}`],
           ['Total Weekly Payments',  `Ksh ${(weekly * selectedWeeks).toFixed(2)}`],
-         
           ['Interest Amount',        `Ksh ${interest.toFixed(2)}`],
         ].filter(Boolean).map(([label, value]) => (
           <div key={label} className="mrow">
@@ -796,10 +689,10 @@ export default function ResponsiveCalculator() {
           <div className="card-dark">
             <h3 style={{ marginBottom: 16, fontSize: 16, fontWeight: 800 }}>Payment Breakdown</h3>
             {[
-              ['Cash Price',            `Ksh ${cashPrice.toFixed(2)}`],
-              ['Deposit',               `Ksh ${depositKsh.toFixed(2)} (${depositPct.toFixed(1)}%)`],
-              ['Weekly Installment',    `Ksh ${weekly.toFixed(2)}`],
-              ['Number of Weeks',       `${selectedWeeks} weeks`],
+              ['Cash Price',         `Ksh ${cashPrice.toFixed(2)}`],
+              ['Deposit',            `Ksh ${depositKsh.toFixed(2)} (${depositPct.toFixed(1)}%)`],
+              ['Weekly Installment', `Ksh ${weekly.toFixed(2)}`],
+              ['Number of Weeks',    `${selectedWeeks} weeks`],
             ].map(([label, value]) => (
               <div key={label} className="brow">
                 <span style={{ color: 'rgba(255,255,255,0.75)', fontSize: 14, fontWeight: 500 }}>{label}</span>
@@ -808,10 +701,10 @@ export default function ResponsiveCalculator() {
             ))}
           </div>
 
-          {/* Schedule */}
+          {/* Deposit only — NO weekly schedule */}
           {cashPrice > 0 && !isBelowMin && !isAboveMax && depositKsh > 0 && (
             <div className="card">
-              <div style={{ display:'flex', alignItems:'center', padding:'12px 14px', background:'linear-gradient(135deg,#eff6ff,#dbeafe)', borderRadius:12, marginBottom:10, borderLeft:'4px solid #3b82f6' }}>
+              <div style={{ display:'flex', alignItems:'center', padding:'12px 14px', background:'linear-gradient(135deg,#eff6ff,#dbeafe)', borderRadius:12, marginBottom: 0, borderLeft:'4px solid #3b82f6' }}>
                 <span style={{ fontSize:20, marginRight:12 }}>💳</span>
                 <span style={{ flex:1, fontSize:14, color:'#374151', fontWeight:600 }}>
                   {startDate ? `Initial Deposit — ${fmtS(startDate)}` : 'Initial Deposit'}
@@ -820,14 +713,15 @@ export default function ResponsiveCalculator() {
                   Ksh {depositKsh.toFixed(2)}
                 </span>
               </div>
-
-            
-              
             </div>
           )}
 
-          {/* Summary Button */}
-          
+          {/* View Summary Button */}
+          {canConfirm && (
+            <button className="submit-btn" onClick={() => setShowSummary(true)}>
+              View Payment Summary
+            </button>
+          )}
         </div>
       </div>
     </>
