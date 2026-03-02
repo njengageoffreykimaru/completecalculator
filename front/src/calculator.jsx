@@ -528,7 +528,6 @@ export default function ResponsiveCalculator() {
           <div className="card-dark">
             <h3 style={{ marginBottom: 16, fontSize: 16, fontWeight: 800 }}>Payment Breakdown</h3>
             {[
-              ['Cash Price',         `Ksh ${cashPrice.toFixed(2)}`],
               ['Deposit',            `Ksh ${depositKsh.toFixed(2)} (${depositPct.toFixed(1)}%)`],
               ['Weekly Installment', `Ksh ${weekly.toFixed(2)}`],
               ['Number of Weeks',    `${selectedWeeks} weeks`],
