@@ -41,7 +41,7 @@ const css = `
     width: 100%;
     max-width: 480px;
     margin: 0 auto;
-    animation: fadeIn 0.5s ease-in;
+    animation: fadeIn 0.5s e-in;
   }
 
   @keyframes fadeIn {
@@ -616,7 +616,6 @@ export default function ResponsiveCalculator() {
   const isAboveMax = cashPrice > 0 && rawVal > cashPrice;
   const depositKsh = isAboveMax ? cashPrice : rawVal;
   const depositPct = cashPrice > 0 ? (depositKsh / cashPrice) * 100 : 0;
-  const remaining  = Math.max(cashPrice - depositKsh, 0);
   const multiplier = MULTIPLIERS[selectedWeeks];
   const weekly     = remaining > 0 ? (remaining / selectedWeeks) * multiplier : 0;
   const total      = depositKsh + weekly * selectedWeeks;
@@ -658,7 +657,6 @@ export default function ResponsiveCalculator() {
           startDate ? ['Start Date', fmtS(startDate)] : null,
           startDate ? ['End Date',   fmtS(endDate)]   : null,
           ['Deposit',                `Ksh ${depositKsh.toFixed(2)} (${depositPct.toFixed(1)}%)`],
-          
           ['Number of Weeks',        `${selectedWeeks} weeks`],
           ['Multiplier',             `${multiplier}x`],
           ['Weekly Installment',     `Ksh ${weekly.toFixed(2)}`],
@@ -800,7 +798,6 @@ export default function ResponsiveCalculator() {
             {[
               ['Cash Price',            `Ksh ${cashPrice.toFixed(2)}`],
               ['Deposit',               `Ksh ${depositKsh.toFixed(2)} (${depositPct.toFixed(1)}%)`],
-              
               ['Weekly Installment',    `Ksh ${weekly.toFixed(2)}`],
               ['Number of Weeks',       `${selectedWeeks} weeks`],
             ].map(([label, value]) => (
@@ -814,9 +811,7 @@ export default function ResponsiveCalculator() {
           {/* Schedule */}
           {cashPrice > 0 && !isBelowMin && !isAboveMax && depositKsh > 0 && (
             <div className="card">
-              <h3 style={{ marginBottom: 16, fontSize: 16, fontWeight: 800, color: '#1e293b' }}>
-                Payment Schedule
-              </h3>
+              
 
               <div style={{ display:'flex', alignItems:'center', padding:'12px 14px', background:'linear-gradient(135deg,#eff6ff,#dbeafe)', borderRadius:12, marginBottom:10, borderLeft:'4px solid #3b82f6' }}>
                 <span style={{ fontSize:20, marginRight:12 }}>💳</span>
