@@ -658,7 +658,7 @@ export default function ResponsiveCalculator() {
           startDate ? ['Start Date', fmtS(startDate)] : null,
           startDate ? ['End Date',   fmtS(endDate)]   : null,
           ['Deposit',                `Ksh ${depositKsh.toFixed(2)} (${depositPct.toFixed(1)}%)`],
-          ['Balance After Deposit',  `Ksh ${remaining.toFixed(2)}`],
+          
           ['Number of Weeks',        `${selectedWeeks} weeks`],
           ['Multiplier',             `${multiplier}x`],
           ['Weekly Installment',     `Ksh ${weekly.toFixed(2)}`],
@@ -800,7 +800,7 @@ export default function ResponsiveCalculator() {
             {[
               ['Cash Price',            `Ksh ${cashPrice.toFixed(2)}`],
               ['Deposit',               `Ksh ${depositKsh.toFixed(2)} (${depositPct.toFixed(1)}%)`],
-              ['Balance After Deposit', `Ksh ${remaining.toFixed(2)}`],
+              
               ['Weekly Installment',    `Ksh ${weekly.toFixed(2)}`],
               ['Number of Weeks',       `${selectedWeeks} weeks`],
             ].map(([label, value]) => (
