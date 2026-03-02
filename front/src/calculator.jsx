@@ -243,88 +243,6 @@ const css = `
 
   .brow:last-child { border-bottom: none; padding-bottom: 0; }
 
-  .overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.6);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-    padding: 16px;
-    backdrop-filter: blur(6px);
-    animation: fadeIn 0.2s ease-in;
-  }
-
-  .modal {
-    background: #fff;
-    border-radius: 20px;
-    padding: 28px;
-    width: 100%;
-    max-width: 440px;
-    box-shadow: 0 24px 64px rgba(0,0,0,0.3);
-    max-height: 88vh;
-    overflow-y: auto;
-    animation: slideUp 0.3s ease-out;
-  }
-
-  @keyframes slideUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  .mrow {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 10px 0;
-    border-bottom: 1px solid #f0f0f0;
-    gap: 12px;
-  }
-
-  .mrow:last-of-type { border-bottom: none; }
-
-  .modal-actions {
-    display: flex;
-    gap: 10px;
-    margin-top: 24px;
-  }
-
-  .btn-close {
-    flex: 1;
-    padding: 14px;
-    border-radius: 12px;
-    border: 2px solid #e2e8f0;
-    background: #f8fafc;
-    cursor: pointer;
-    font-weight: 700;
-    font-size: 14px;
-    font-family: 'DM Sans', sans-serif;
-    transition: all 0.2s;
-  }
-
-  .btn-close:hover { background: #e2e8f0; }
-
-  .btn-confirm {
-    flex: 1;
-    padding: 14px;
-    border-radius: 12px;
-    border: none;
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    color: #fff;
-    cursor: pointer;
-    font-weight: 700;
-    font-size: 14px;
-    font-family: 'DM Sans', sans-serif;
-    transition: all 0.2s;
-    box-shadow: 0 4px 12px rgba(102,126,234,0.3);
-  }
-
-  .btn-confirm:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(102,126,234,0.4);
-  }
-
   .txt-warn {
     color: #ef4444;
     font-size: 12px;
@@ -352,31 +270,6 @@ const css = `
     gap: 6px;
   }
 
-  .submit-btn {
-    width: 100%;
-    padding: 16px;
-    border-radius: 14px;
-    border: none;
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    color: #fff;
-    font-size: 16px;
-    font-weight: 800;
-    cursor: pointer;
-    margin-bottom: 24px;
-    font-family: 'DM Sans', sans-serif;
-    transition: all 0.2s;
-    box-shadow: 0 4px 16px rgba(102,126,234,0.35);
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-  }
-
-  .submit-btn:hover:not(:disabled) {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(102,126,234,0.45);
-  }
-
-  .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
-
   @media (max-width: 360px) {
     html { font-size: 14px; }
     .root { padding: 16px 10px; }
@@ -389,10 +282,6 @@ const css = `
     .prefix { left: 12px; font-size: 13px; }
     .weeks-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
     .week-btn { padding: 11px 0; font-size: 13px; }
-    .submit-btn { padding: 14px; font-size: 14px; }
-    .modal { padding: 18px; }
-    .modal-actions { flex-direction: column; }
-    .btn-close, .btn-confirm { width: 100%; padding: 12px; }
   }
 
   @media (min-width: 361px) and (max-width: 480px) {
@@ -402,7 +291,6 @@ const css = `
     .header h1 { font-size: 22px; }
     .card, .card-dark { padding: 16px; margin-bottom: 14px; }
     .weeks-grid { grid-template-columns: repeat(2, 1fr); }
-    .modal { max-width: 100%; padding: 20px; }
   }
 
   @media (min-width: 481px) and (max-width: 768px) {
@@ -410,7 +298,6 @@ const css = `
     .container { max-width: 500px; }
     .header h1 { font-size: 28px; }
     .card, .card-dark { padding: 22px; margin-bottom: 18px; }
-    .modal { max-width: 460px; padding: 28px; }
   }
 
   @media (min-width: 769px) and (max-width: 1024px) {
@@ -419,8 +306,6 @@ const css = `
     .header h1 { font-size: 32px; }
     .card, .card-dark { padding: 26px; margin-bottom: 20px; }
     .week-btn { padding: 14px 0; font-size: 15px; }
-    .submit-btn { padding: 18px; font-size: 17px; }
-    .modal { max-width: 520px; padding: 32px; }
   }
 
   @media (min-width: 1025px) and (max-width: 1440px) {
@@ -432,9 +317,6 @@ const css = `
     .input, .date-input { font-size: 16px; padding: 14px 18px 14px 54px; }
     .prefix { left: 16px; font-size: 15px; }
     .week-btn { padding: 14px 0; font-size: 15px; }
-    .submit-btn { padding: 18px; font-size: 17px; }
-    .modal { max-width: 540px; padding: 36px; }
-    .mrow { font-size: 15px; padding: 12px 0; }
   }
 
   @media (min-width: 1441px) {
@@ -447,9 +329,6 @@ const css = `
     .input, .date-input { font-size: 17px; padding: 16px 20px 16px 58px; }
     .prefix { left: 18px; font-size: 16px; }
     .week-btn { padding: 16px 0; font-size: 16px; }
-    .submit-btn { padding: 20px; font-size: 18px; }
-    .modal { max-width: 600px; padding: 40px; }
-    .mrow { font-size: 16px; padding: 14px 0; }
   }
 
   @media (max-width: 896px) and (orientation: landscape) {
@@ -457,7 +336,6 @@ const css = `
     .header { margin-bottom: 14px; }
     .header h1 { font-size: 20px; }
     .card, .card-dark { padding: 14px; margin-bottom: 12px; }
-    .modal { max-height: 95vh; }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -486,7 +364,7 @@ const css = `
 
   @media print {
     .root { background: #fff; padding: 0; justify-content: flex-start; }
-    .submit-btn, .preset-40, .week-btn { display: none; }
+    .preset-40, .week-btn { display: none; }
     .card, .card-dark { box-shadow: none; border: 1px solid #ddd; page-break-inside: avoid; }
   }
 `;
@@ -501,7 +379,6 @@ export default function ResponsiveCalculator() {
   const [using40,       setUsing40]       = useState(false);
   const [selectedWeeks, setSelectedWeeks] = useState(4);
   const [startDate,     setStartDate]     = useState('');
-  const [showSummary,   setShowSummary]   = useState(false);
 
   const minDeposit = cashPrice * 0.40;
   const rawVal     = parseFloat(depositInput) || 0;
@@ -514,8 +391,6 @@ export default function ResponsiveCalculator() {
 
   const multiplier = MULTIPLIERS[selectedWeeks];
   const weekly     = remaining > 0 ? (remaining / selectedWeeks) * multiplier : 0;
-  const total      = depositKsh + weekly * selectedWeeks;
-  const interest   = total - cashPrice;
 
   const endDate = (() => {
     if (!startDate) return '';
@@ -538,16 +413,10 @@ export default function ResponsiveCalculator() {
     setDepositInput(e.target.value);
   };
 
-  const canConfirm = cashPrice > 0 && !isBelowMin && !isAboveMax && depositKsh > 
-      
-  );
-
   return (
     <>
       <style>{css}</style>
       <div className="root">
-        {showSummary && <SummaryDialog />}
-
         <div className="container">
           <div className="header">
             <h1>💳 Installment Calculator</h1>
@@ -671,10 +540,10 @@ export default function ResponsiveCalculator() {
             ))}
           </div>
 
-          {/* Deposit only — NO weekly schedule */}
+          {/* Initial Deposit */}
           {cashPrice > 0 && !isBelowMin && !isAboveMax && depositKsh > 0 && (
             <div className="card">
-              <div style={{ display:'flex', alignItems:'center', padding:'12px 14px', background:'linear-gradient(135deg,#eff6ff,#dbeafe)', borderRadius:12, marginBottom: 0, borderLeft:'4px solid #3b82f6' }}>
+              <div style={{ display:'flex', alignItems:'center', padding:'12px 14px', background:'linear-gradient(135deg,#eff6ff,#dbeafe)', borderRadius:12, borderLeft:'4px solid #3b82f6' }}>
                 <span style={{ fontSize:20, marginRight:12 }}>💳</span>
                 <span style={{ flex:1, fontSize:14, color:'#374151', fontWeight:600 }}>
                   {startDate ? `Initial Deposit — ${fmtS(startDate)}` : 'Initial Deposit'}
@@ -683,7 +552,8 @@ export default function ResponsiveCalculator() {
                   Ksh {depositKsh.toFixed(2)}
                 </span>
               </div>
-            
+            </div>
+          )}
         </div>
       </div>
     </>
