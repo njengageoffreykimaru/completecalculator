@@ -6,7 +6,7 @@ const css = `
   *, *::before, *::after { 
     box-sizing: border-box; 
     margin: 0; 
-    padding: 0; 
+    padding: 0?
   }
 
   html, body, #root {
@@ -144,7 +144,7 @@ const css = `
 
   @keyframes shake {
     0%, 100% { transform: translateX(0); }
-    25%       { transform: translateX(-5px); }
+    25%       { transform: translateX(-5px); }✅❌
     75%       { transform: translateX(5px); }
   }
 
@@ -369,7 +369,7 @@ const css = `
   }
 `;
 
-const MULTIPLIERS = { 4: 1.3, 8: 1.4, 12: 1.5, 16: 1.6, 20: 1.7, 24: 1.8 };
+const MULTIPLIERS = { 4: 1.3, 8: 1.4, 12: 1.5, 16: 1.6, 20: 1.7, 24: 1.8;
 const fmt  = d => d ? new Date(d).toLocaleDateString('en-US', { weekday:'long', year:'numeric', month:'short', day:'numeric' }) : '';
 const fmtS = d => d ? new Date(d).toLocaleDateString('en-US', { year:'numeric', month:'short', day:'numeric' }) : '';
 
